@@ -43,6 +43,7 @@
         font-size: 17px;
         color: #333;
         line-height: 1.5;
+        margin-bottom: 15px;
     }
 
     .heart {
@@ -66,17 +67,17 @@
 
     #no {
         background-color: #278ef5;
-        color: #333;
+        color: white;
         position: relative;
     }
 
-    /* 💖 Corazones flotando */
     .floating-heart {
         position: fixed;
         bottom: -20px;
         pointer-events: none;
         animation: floatUp linear forwards;
         opacity: 0.9;
+        z-index: 1;
     }
 
     @keyframes floatUp {
@@ -89,22 +90,14 @@
             opacity: 0;
         }
     }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-        h1 { font-size: 24px; }
-        p { font-size: 16px; }
-    }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Música romántica nueva -->
 <audio id="music" loop>
     <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
-
 
 <div class="container">
     <div class="card">
@@ -113,19 +106,14 @@
         <p>
             Desde que llegaste a mi vida, entendí que el amor no se busca, se encuentra.<br>
             Y yo te encontré a ti.<br><br>
-
             En tus palabras, en tus sonrisas, en la forma en que haces que mi mundo sea mejor.<br><br>
-
             Si tengo que elegir un lugar seguro,<br>
             siempre será a tu lado.
         </p>
-            </p>
-
-        </p>
 
         <p>
-            Por eso hoy quiero preguntarte algo especial:
-            <br><strong>¿Quieres ser mi San Valentín?</strong>
+            Por eso hoy quiero preguntarte algo especial:<br>
+            <strong>¿Quieres ser mi San Valentín?</strong>
         </p>
 
         <div class="heart">🌹💘🌹</div>
@@ -136,7 +124,6 @@
 </div>
 
 <script>
-    /* Música: se activa al primer clic/touch */
     document.body.addEventListener("click", () => {
         document.getElementById("music").play();
     }, { once: true });
@@ -155,21 +142,15 @@
         noBtn.style.top = y + "px";
     }
 
-    /* 💖 Crear corazones flotando (AHORA SÍ VISIBLES) */
     function crearCorazon() {
         const heart = document.createElement("div");
         heart.classList.add("floating-heart");
         heart.innerHTML = "❤️";
-
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = (Math.random() * 20 + 20) + "px";
         heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-
         document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 7000);
+        setTimeout(() => heart.remove(), 7000);
     }
 
     setInterval(crearCorazon, 300);

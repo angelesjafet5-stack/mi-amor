@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amor 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        max-width: 360px;
+        width: 100%;
+    }
+
+    h1 {
+        color: #e32a39;
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 17px;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .heart {
+        font-size: 30px;
+        margin: 12px 0;
+    }
+
+    button {
+        padding: 12px 22px;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    #yes {
+        background-color: #f94a6a;
+        color: white;
+    }
+
+    #no {
+        background-color: #278ef5;
+        color: #333;
+        position: relative;
+    }
+
+    /* 💖 Corazones flotando */
+    .floating-heart {
+        position: fixed;
+        bottom: -20px;
+        pointer-events: none;
+        animation: floatUp linear forwards;
+        opacity: 0.9;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-120vh);
+            opacity: 0;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        h1 { font-size: 24px; }
+        p { font-size: 16px; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Música romántica nueva -->
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+
+<div class="container">
+    <div class="card">
+        <h1>Mi amor 💖</h1>
+
+        <p>
+            Desde que llegaste a mi vida, entendí que el amor no se busca, se encuentra.<br>
+            Y yo te encontré a ti.<br><br>
+
+            En tus palabras, en tus sonrisas, en la forma en que haces que mi mundo sea mejor.<br><br>
+
+            Si tengo que elegir un lugar seguro,<br>
+            siempre será a tu lado.
+        </p>
+
+        <div class="heart">🌹💘🌹</div>
+
+        <button id="yes" onclick="aceptar()">Sí, quiero 💖</button>
+        <button id="no" onclick="moverNo()">No 🙈</button>
+    </div>
+</div>
+
+<script>
+    /* Música: se activa al primer clic/touch */
+    document.body.addEventListener("click", () => {
+        document.getElementById("music").play();
+    }, { once: true });
+
+    function aceptar() {
+        alert("💖 Gracias por decir que sí, mi amor 💖\nPrometo cuidarte y hacerte feliz siempre 🥰");
+    }
+
+    function moverNo() {
+        const noBtn = document.getElementById("no");
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+        noBtn.style.position = "fixed";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    /* 💖 Crear corazones flotando (AHORA SÍ VISIBLES) */
+    function crearCorazon() {
+        const heart = document.createElement("div");
+        heart.classList.add("floating-heart");
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
